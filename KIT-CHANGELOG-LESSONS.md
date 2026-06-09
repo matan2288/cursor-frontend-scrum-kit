@@ -6,9 +6,9 @@ Add entries via `@workflows/improve-kit.md`. Newest first. No secrets.
 
 ### v2.6 — 2026-06-09
 
-- Change: GETTING-STARTED.md (intro + cheatsheet with light section/task icons); integrate-kit welcome gates; learnings.md → project-lessons.md; workflows/save-to-project-lessons.md; delete prompts/learn.md; learning-loop validates corrections against internal + external best practice before apply/save and suggests save at session/fix close.
-- Why: Onboarding was chat-only; learn.md implied auto-learning; user chose project-lessons + save-to-project-lessons for clear action-vs-data naming.
-- Impact: GETTING-STARTED.md, project-lessons.md, save-to-project-lessons.md, integrate-kit.md, README, learning-loop.mdc, context.mdc, prompts/README, KIT-CHANGELOG. This directory is the kit master; consumer repos integrate from here.
+- Change: GETTING-STARTED.md (intro + cheatsheet with light section/task icons); integrate-kit welcome gates; learnings.md → project-lessons.md; workflows/save-to-project-lessons.md; delete prompts/learn.md; learning-loop validates corrections against internal + external best practice before apply/save and suggests save at session/fix close; **scripts/install.sh** + standalone GitHub repo for flat `.cursor/` install (no nesting); integrate-kit/README point at GitHub URL.
+- Why: Onboarding was chat-only; learn.md implied auto-learning; user chose project-lessons + save-to-project-lessons for clear action-vs-data naming; GitHub + install script for shareable pull-by-tag distribution.
+- Impact: GETTING-STARTED.md, project-lessons.md, save-to-project-lessons.md, integrate-kit.md, README, scripts/install.sh, learning-loop.mdc, context.mdc, prompts/README, KIT-CHANGELOG. Publish: github.com/matan2288/cursor-frontend-scrum-kit (tag v2.6).
 
 ### v2.5 — 2026-06-09
 
