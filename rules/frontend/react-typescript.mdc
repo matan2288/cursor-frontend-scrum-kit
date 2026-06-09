@@ -1,0 +1,76 @@
+---
+description: React and TypeScript implementation rules for components, hooks, and frontend features.
+globs: ["**/*.{ts,tsx}", "**/*.{js,jsx}"]
+alwaysApply: false
+---
+
+# React TypeScript
+
+Use this rule when implementing or reviewing React and TypeScript frontend code.
+
+## React Patterns
+
+- Prefer function components and hooks.
+- Do not define components inside other components unless it is a story/demo-only helper.
+- Avoid redundant `useEffect` that only mirrors props into state. Derive values during render.
+- Use functional state updates when the next state depends on the previous value.
+- Put user-driven updates in event handlers, not effects that react to unrelated state changes.
+- Keep conditional rendering explicit. Avoid `count && <Badge />` when `count` may be `0`; derive a boolean such as `hasCount`.
+- Keep always-mounted animated panels in the DOM when open/closed behavior is represented by state attributes and CSS.
+- Do not wrap trivial primitive expressions in `useMemo`; reserve memoization for measurable work or stable references that matter.
+- Use lazy `useState` initialization for expensive initial values.
+- Use `useTransition` for non-urgent updates (filtering, tabs) to keep input responsive.
+- Do not put unstable effect callbacks in dependency arrays; use `useEffectEvent` or a ref.
+
+## Performance And Data Flow
+
+- Fix waterfalls and bundle size before micro-optimizations.
+- Parallelize independent async work with `Promise.all`.
+- Start independent promises early and await them late when loader/API code allows it.
+- Defer `await` into the branch that needs the result instead of blocking every path.
+- Prefer concrete imports over broad barrel imports when the bundler does not optimize them.
+- Dynamically import heavy charts, editors, animation payloads, and rarely used panels.
+- Defer analytics, logging, and other third-party work away from the critical render path when possible.
+- Use passive listeners for scroll, wheel, and touch handlers.
+- Initialize global clients once at module scope, not on every mount.
+- Build `Map` or `Set` indexes once for repeated lookups in large lists.
+- Dedupe client fetches with shared keys (e.g. SWR) instead of refetching per component.
+- Version and migrate `localStorage` keys; store a minimal shape.
+- Keep arrays immutable: prefer `toSorted()` / spread over mutating `.sort()` on shared arrays.
+
+## TypeScript Patterns
+
+- Use project-local prop and domain types. Avoid broad `Record<string, unknown>` unless it is truly a generic boundary.
+- Keep public component props stable and documented through names, defaults, and story examples.
+- Prefer typed state slugs or const objects for UI states such as `open`, `closed`, `selected`, `idle`, `loading`, and `disabled`.
+- Default optional string props to an empty value when the component logic treats empty and missing the same.
+
+## Component Structure
+
+- Keep public components focused on markup, behavior, accessibility, and composition.
+- Put repeated formatting, filtering, sorting, and adapter logic into local helpers or hooks.
+- Prefer controlled/uncontrolled behavior only when the component needs both modes; otherwise keep the simpler API.
+- Mirror important UI state into stable attributes when CSS, tests, or consumers need to target it.
+- Hoist static JSX to module scope when it does not depend on props, state, or context.
+- For long lists, consider virtualization or `content-visibility: auto` on row wrappers, only after checking local project patterns.
+
+## Next.js And RSC When Applicable
+
+- Skip this section for pure Vite SPAs.
+- Use Suspense boundaries so slow sections do not block the whole route.
+- Minimize serialized props across server/client boundaries.
+- Authenticate server actions like API routes.
+- Use per-request caching (e.g. `React.cache()`) for duplicated server data loaders where the framework supports it.
+- Add resource hints (`prefetchDNS`, `preconnect`, `preload`) for critical assets.
+
+## Accessibility
+
+- Use native controls for interaction before custom ARIA widgets.
+- Give icon-only buttons an `aria-label`.
+- Mark decorative icons with `aria-hidden`.
+- Connect labels and form controls with `htmlFor` / `id` or native wrapping labels.
+- Preserve keyboard access and visible focus when changing interaction patterns.
+
+## References
+
+Worked examples and priority tables: `skills/frontend/react/patterns.md`. External sources: `skills/frontend/react/references.md`.

@@ -1,0 +1,51 @@
+---
+description: Styling boundaries for React frontend projects using Tailwind, Sass, CSS modules, tokens, or component libraries.
+globs: ["**/*.{tsx,jsx,scss,css}", "**/tailwind.config.*", "**/vite.config.*", "**/next.config.*"]
+alwaysApply: false
+---
+
+# Styling Boundaries
+
+Use this rule when working on component appearance, theming, responsiveness, or styling architecture.
+
+## First Principle
+
+Follow the project's existing styling strategy. Do not mix in a new strategy unless the user asks or the current strategy cannot support the requirement.
+
+## Common Strategies
+
+- Tailwind in JSX is acceptable only when the project already uses utility classes directly in components.
+- Sass or CSS modules should hold component appearance when the project separates structure from stylesheets.
+- Design tokens and CSS variables should represent shared colors, spacing, radius, typography, and theme values.
+- Component libraries should be adapted through their supported APIs before overriding internals.
+
+## Boundaries
+
+- Do not add public `className`, `style`, or theme props unless the project already exposes them or the user approves the API.
+- Keep per-instance dynamic values narrow. Prefer CSS variables for runtime values such as swatch colors or measured dimensions.
+- Keep responsive behavior in styles where possible; use React state for layout only when behavior depends on runtime interaction or measurement.
+- Avoid hard-coded colors in component styles when the project has tokens or theme variables.
+- Keep state styling tied to stable selectors or attributes, not fragile DOM order.
+- Preserve existing public styling contracts. If consumers style components through data attributes, CSS variables, CSS modules, slots, or class names, keep that contract stable.
+- Do not introduce new styling hooks casually. Treat exported props, stable selectors, slot names, and state attributes as public API in reusable components.
+- Keep structure, behavior, and appearance separated according to local convention. If the project keeps appearance in stylesheets, do not move visual noise into TSX.
+- Register new styles through the project's existing style entry point or import convention.
+- Prefer predictable, semantic DOM structure for reusable components so tests, styling, accessibility, and consumers do not depend on accidental markup.
+- Follow the project's conditional rendering convention instead of mixing patterns.
+
+## Generalized Component-Library Lessons
+
+- Stable styling hooks are useful for reusable UI, but the hook mechanism must match the project.
+- State should be mirrored to styling hooks only when styles, tests, or consumers need it.
+- Tokens and CSS variables scale better than hard-coded colors for themes and brand customization.
+- Dynamic inline styles should be narrow and intentional, usually backed by CSS variables.
+- Visual parity matters when refactoring styles. Do not redesign while moving styles unless asked.
+
+## Review Checklist
+
+- Does the implementation preserve the existing visual language?
+- Does it work at narrow, medium, and wide viewport sizes?
+- Does focus remain visible?
+- Are theme colors, dark mode, or brand overrides still respected?
+- Can a consumer customize the component in the same way as similar components?
+- Did the change preserve existing selectors, slots, style entry points, and public styling APIs?

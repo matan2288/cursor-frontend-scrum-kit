@@ -1,0 +1,34 @@
+---
+description: Ask whether to recap yesterday's work before starting today's todo-driven work.
+globs: ["**/*todo*", "**/*TODO*", "**/todos/**", "**/TODO.md", "**/TODOS.md"]
+alwaysApply: false
+---
+
+# Daily Todo Handoff
+
+Use this rule when the user asks to start from a todo file, daily task list, sprint note, or today's todo.
+
+## Before Starting Today's Todo
+
+If the todo source includes prior-day context, yesterday's work, completed items, blockers, or a dated history, ask once before starting:
+
+> Before I start today's todo, do you want a quick recap of what was done yesterday?
+
+If the user says yes, summarize:
+
+- What was completed yesterday.
+- What remains open.
+- Known blockers, risks, or handoffs.
+- The first suggested item for today.
+
+If the user says no, start today's todo directly.
+
+## When Not To Ask
+
+- Do not ask if there is no visible prior-day context.
+- Do not ask repeatedly in the same work session.
+- Do not block urgent user instructions; if the user gives a direct task, proceed and mention any relevant yesterday context only if it changes the work.
+
+## Handoff Quality
+
+Keep the recap short and factual. Separate completed work from assumptions, and call out stale TODOs that may no longer match the current code.

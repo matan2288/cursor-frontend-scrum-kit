@@ -1,0 +1,86 @@
+---
+description: Quality gates and push/network workflow for frontend implementation, review, commits, and pull requests.
+alwaysApply: true
+---
+
+# Before-Commit Checklist
+
+Use project-local commands and checks. Do not invent a test stack when the repository already has one.
+
+> Toggle: this rule is `alwaysApply: true` so finish/commit gates fire reliably. Set `alwaysApply: false` per repo if you want it lighter.
+
+## Before Finishing Implementation
+
+- Run or recommend the narrowest meaningful verification for the changed surface.
+- Prefer the repository's scripts such as `build`, `lint`, `test`, `typecheck`, `storybook`, or `build-storybook`.
+- Inspect `package.json` first and run only scripts that exist.
+- For UI changes, include a visual check path: Storybook story, preview route, screenshot, or manual viewport notes.
+- For accessibility-sensitive changes, check keyboard interaction, focus states, labels, and screen-reader names.
+- Re-run checks after fixing failures.
+
+## Before Commit Or PR
+
+- Stage only intentional files.
+- Do not include secrets, local env files, generated caches, or editor metadata unless explicitly requested (see `rules/security/secrets-and-config.mdc`).
+- Use a commit message that explains the purpose of the change.
+- Mention skipped checks and why they were skipped.
+- Only create commits when the user asks.
+- Do not push unless explicitly requested.
+- Generic rules do not replace project rules. Apply stricter project-specific contracts for touched paths.
+- **Rex SDK:** also run `rules/project-specific/pre-commit-alignment.mdc`.
+
+## Suggested Pre-Commit Commands
+
+Use the package manager and scripts already present in the repository:
+
+```bash
+npm run build      # if "build" exists — must exit 0
+npm run lint       # if "lint" exists
+npm test           # if "test" exists
+npm run typecheck  # if "typecheck" exists, or tsc --noEmit
+```
+
+## When Checks Fail
+
+1. Fix the issue; do not weaken project contracts unless the user asked.
+2. Re-run build / lint / test / typecheck.
+3. Re-run project-specific checks for touched paths.
+4. Then commit.
+
+## Code Review Stance
+
+- Prioritize correctness, regressions, missing tests, accessibility issues, public API breaks, and release risk.
+- Keep style-only preferences secondary unless they violate an established rule.
+- When reviewing, lead with findings before summaries.
+
+## Dependency Changes
+
+- Prefer no new dependencies for narrow component work.
+- If a dependency is needed, explain why existing tools are insufficient.
+- Check package manager conventions before adding packages.
+- Keep lockfile changes paired with manifest changes.
+
+## Push Workflow
+
+- Use the repository's default branch unless instructed otherwise.
+- Pull/rebase before push when the remote rejects with a fetch-first or non-fast-forward error.
+- Never force push to a default branch unless the user explicitly asks.
+
+### Network Proxy
+
+Some environments need a configured proxy for outbound HTTP(S) (git push/pull, npm/npx, MCP launchers, curl). Source the helper in the same shell before those commands:
+
+```bash
+source "${HOME}/.cursor/cursor-network.sh" && apply_cursor_network
+git push origin main
+```
+
+- Do not set `git config http.proxy`. Let the helper export `HTTP_PROXY` / `HTTPS_PROXY` when a proxy is configured and reachable, and unset them for direct access.
+- Detection order: `~/.cursor/network.env` (`CURSOR_NETWORK=local|work`), then `CURSOR_PROXY_URL`, then already-exported `HTTP_PROXY` / `HTTPS_PROXY`, then Cursor `http.proxy` (probed for reachability).
+- Keep private proxy hosts, internal domains, and credentials out of reusable rules. Put per-project notes in `rules/project-specific/` (start from `network-template.md`) and local values in `~/.cursor/network.env`.
+
+| Symptom | Action |
+|---------|--------|
+| `SSL_ERROR_SYSCALL` / connection reset on local | `CURSOR_NETWORK=local` in `network.env`; re-source helper |
+| `fetch first` / non-fast-forward | `git pull --rebase`, then push again |
+| Proxy host wrong | Update Cursor `http.proxy` or `CURSOR_PROXY_URL` in `network.env` |

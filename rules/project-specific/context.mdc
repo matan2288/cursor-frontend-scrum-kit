@@ -1,0 +1,53 @@
+---
+description: Single project index. Read this first to learn how to build, run, and work in this project.
+alwaysApply: true
+---
+
+# Project Context
+
+This is the one file that tells you how this project is built and how to work in it. Read the canonical files below and derive the stack and commands from them — do not guess scripts, versions, or dependencies. Update the `@`-paths and the TODOs to match this repository.
+
+> The `@`-paths below (`@package.json`, `@tsconfig.json`, etc.) are placeholders. They resolve once this kit is installed into a real project; fill or remove them to match the repo.
+
+## More Project Context
+
+- @glossary.md — project term definitions
+- @project-lessons.md — accumulated project-specific decisions and corrections (maintained by the learning loop)
+
+## Build & Tooling (source of truth)
+
+Mechanics (how to build/run/test) come from these files, not from prose:
+
+- @package.json — scripts, dependencies, package manager
+- @tsconfig.json — TypeScript config and path aliases
+- @.env.example — required environment variables (copy to `.env`, never commit `.env`)
+- Lockfile (`package-lock.json` / `pnpm-lock.yaml` / `yarn.lock`) — the package manager in use; do not switch managers
+- Build/dev config (`vite.config.*` / `next.config.*`) — bundler, aliases, env handling
+
+## How To Build / Run
+
+1. Read `package.json` scripts and run only scripts that exist.
+2. Use the package manager implied by the lockfile.
+3. Copy `.env.example` to `.env` and fill required keys before running.
+
+## Stack (fill in — the "why" only; versions live in package.json)
+
+- Framework: TODO (e.g. React + Vite, Next.js)
+- Styling: TODO (e.g. Tailwind / CSS modules / Sass / tokens)
+- State / data fetching: TODO (e.g. Zustand, React Query)
+- Routing: TODO
+- Testing: TODO (e.g. Vitest + Testing Library, Playwright)
+- Component library / design system: TODO
+
+## Architecture & Conventions (fill in)
+
+- Folder map: TODO (where features, shared code, and data access live)
+- Import boundaries: TODO (allowed/disallowed import directions)
+- Naming conventions: TODO (files, components, hooks, tests)
+
+## Precedence
+
+1. Canonical files (`package.json`, configs) are the truth for **mechanics**.
+2. This index is the truth for **intent** (stack rationale, conventions).
+3. If they disagree, trust `package.json` for mechanics and this file for intent, and flag the mismatch.
+4. Generic kit rules apply underneath; this project-specific index overrides on conflict.

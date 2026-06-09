@@ -1,0 +1,39 @@
+---
+description: Template for project-specific Cursor rules that override or refine this reusable kit.
+alwaysApply: false
+---
+
+# Project-Specific Rules
+
+Use this folder for local project contracts that should not be generalized into the reusable frontend scrum kit.
+
+## Start Here: `context.mdc`
+
+`context.mdc` is the single always-applied entry point. It tells the agent how the project is built and how to work in it by `@`-pointing to the canonical files (`package.json`, `tsconfig.json`, build config, `.env.example`) and capturing only intent (stack rationale, architecture, conventions) inline. It also `@`-points to `glossary.md` and `project-lessons.md`. Fill in its TODOs per repo.
+
+## Files Here
+
+- `context.mdc` — always-on project entry point (build, run, stack, architecture).
+- `glossary.md` — project term definitions (`@`-mentioned by context).
+- `project-lessons.md` — accumulated decisions/corrections, maintained by the learning loop (`@`-mentioned by context).
+- `network-template.md` — plain template for project network setup (inert until copied).
+- `prompts/` — paste/invoke templates; save lessons via `@workflows/save-to-project-lessons.md`.
+
+## What Belongs Here
+
+- Product, domain, or customer-specific terminology.
+- Local folder ownership, module boundaries, and generated-code constraints.
+- App-specific API, data, routing, deployment, or release rules.
+- Project-specific network setup notes, using placeholders or links instead of private proxy values (start from `network-template.md`).
+- Styling contracts that are unique to the project.
+- Testing, accessibility, or QA expectations that are stricter than the generic kit.
+
+## Layering
+
+Project-specific rules are the local source of truth. When they conflict with generic kit rules, follow the project-specific rule and mention the conflict if it affects the requested work.
+
+## Recommended Use
+
+Copy this folder into a project's `.cursor/rules/` directory, then replace this README with focused `.mdc` rules. Keep each rule small, concrete, and scoped with `globs` when possible.
+
+Never commit private endpoints, credentials, tokens, internal domains, or company-specific infrastructure values to reusable kit rules. See `rules/security/secrets-and-config.mdc`.

@@ -1,0 +1,30 @@
+---
+description: Check for TODOs, debug leftovers, placeholders, and temporary code before finishing delivery work.
+alwaysApply: true
+---
+
+# Cleanup
+
+Use this rule before finishing implementation, review, commit, or PR preparation.
+
+> Toggle: `alwaysApply: true` for reliable finish-line cleanup. Set `false` per repo to make it lighter.
+
+## Check For Leftovers
+
+Inspect touched files for accidental leftovers:
+
+- `TODO`, `FIXME`, `HACK`, `XXX`, `TEMP`, `WIP`, and placeholder text.
+- `console.log`, `debugger`, temporary traces, mock data, and commented-out code.
+- Disabled tests, skipped assertions, temporary feature flags, and broad catch-all fallbacks.
+- Notes that say something will be handled later without an issue, owner, or explicit user agreement.
+
+## Decide What To Do
+
+- Remove accidental leftovers before finishing.
+- Keep intentional TODOs only when they are clear, scoped, and useful to future work.
+- Prefer a tracking issue, ticket ID, or concrete follow-up note for TODOs that remain.
+- Do not hide unresolved leftovers. Mention them in the final response or PR notes with the reason they remain.
+
+## Review Stance
+
+When reviewing code, flag leftover markers only when they create real delivery risk, hide incomplete behavior, weaken tests, or make the change harder to maintain.

@@ -1,0 +1,48 @@
+---
+description: Capture user corrections and preferences into the right rule/doc so the kit improves over time.
+alwaysApply: true
+---
+
+# Learning Loop
+
+When the user corrects you or states a durable preference, **validate first**, then **offer** to persist — propose a diff; never write without confirmation. Best-effort detection; on demand use `@workflows/save-to-project-lessons.md`.
+
+## Validate before apply or save
+
+When the user corrects you, **before** changing code or proposing a project-lesson diff:
+
+1. **Internal** — check repo rules and docs for the topic: `rules/project-specific/*`, `project-lessons.md`, `glossary.md`, and similar components in the codebase; kit `rules/frontend/*` when relevant.
+2. **External** — when the topic is general React/TS/a11y (not a repo-only quirk), check `skills/frontend/react/references.md` (react.dev, Vercel React best practices) or a brief doc lookup if needed.
+3. **Compare** — state briefly in chat: **aligned** with best practice | **intentional project override** | **conflict** (explain tradeoff and cite source).
+4. **Then** — apply the fix or propose the save diff. On **conflict**, ask the user to confirm the project override before saving.
+
+Intentional project choices that differ from generic best practice are valid — note `Why: intentional project choice` in the lesson entry.
+
+## Steps (save / persist)
+
+1. Classify the scope:
+   - Repo-specific decision/quirk -> `rules/project-specific/project-lessons.md`
+   - General frontend standard -> `rules/frontend/*`
+   - Security/secrets -> `rules/security/*`
+   - A change to the kit's own design -> `KIT-CHANGELOG-LESSONS.md` (use `@workflows/improve-kit.md`)
+2. Name the exact target file and show a proposed diff.
+3. Prefer updating existing wording over adding a duplicate.
+4. Write only after the user confirms.
+
+## Suggest the save workflow
+
+Still never auto-write. **Suggest** (not silent save) when:
+
+| When | Behavior |
+|------|----------|
+| User corrects or states durable preference | **Validate** (above), apply fix, then **offer** save or `@workflows/save-to-project-lessons.md` |
+| Session had 2+ uncaptured corrections/preferences | **Suggest once**: run save workflow to capture them |
+| Component-review fix session closes (step 4) | One-line suggest if new repo rules emerged |
+| Feature-development progress closes (step 4) | One-line suggest if architectural/decision notes were noted |
+
+## Rules
+
+- Never store secrets, credentials, internal hostnames, or private URLs.
+- Keep entries brief and scannable.
+- When a lesson is promoted from `project-lessons.md` to a general rule, note it in the `Promoted to` field.
+- `project-lessons.md` is **data**; `@workflows/save-to-project-lessons.md` is the **action** to save.
