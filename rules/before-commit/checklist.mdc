@@ -22,12 +22,13 @@ Use project-local commands and checks. Do not invent a test stack when the repos
 
 - Stage only intentional files.
 - Do not include secrets, local env files, generated caches, or editor metadata unless explicitly requested (see `rules/security/secrets-and-config.mdc`).
-- Use a commit message that explains the purpose of the change.
+- Before commit, check the **Problems** panel on **touched files** (`ReadLints` or `npm run lint`). If issues found, summarize and **ask:** fix now or skip for this commit? Skip only on explicit user say-so; note skipped checks.
+- Commit message: max **2 lines**, plain ASCII (`type(scope): subject` plus optional one-line body). No em dashes, section symbols, or emoji.
 - Mention skipped checks and why they were skipped.
 - Only create commits when the user asks.
 - Do not push unless explicitly requested.
 - Generic rules do not replace project rules. Apply stricter project-specific contracts for touched paths.
-- **Rex SDK:** also run `rules/project-specific/pre-commit-alignment.mdc`.
+- When the project defines stricter pre-commit rules under `rules/project-specific/`, run those too.
 
 ## Suggested Pre-Commit Commands
 
@@ -77,7 +78,7 @@ git push origin main
 
 - Do not set `git config http.proxy`. Let the helper export `HTTP_PROXY` / `HTTPS_PROXY` when a proxy is configured and reachable, and unset them for direct access.
 - Detection order: `~/.cursor/network.env` (`CURSOR_NETWORK=local|work`), then `CURSOR_PROXY_URL`, then already-exported `HTTP_PROXY` / `HTTPS_PROXY`, then Cursor `http.proxy` (probed for reachability).
-- Keep private proxy hosts, internal domains, and credentials out of reusable rules. Put per-project notes in `rules/project-specific/` (start from `network-template.md`) and local values in `~/.cursor/network.env`.
+- Keep private proxy hosts, internal domains, and credentials out of reusable rules. Put per-project notes in `network-setup.local.md` (gitignored; copy from `network-setup.example.md`) and local values in `~/.cursor/network.env`.
 
 | Symptom | Action |
 |---------|--------|

@@ -8,12 +8,12 @@ Bootstrap this kit into a target frontend repo. Cursor-native replacement for an
 
 Copy generic kit files from (pick one):
 
-1. **GitHub (recommended):** `https://github.com/matan2288/cursor-frontend-scrum-kit` — tag `v2.6` (repo root = kit files).
+1. **GitHub (recommended):** [github.com/matan2288/cursor-frontend-scrum-kit](https://github.com/matan2288/cursor-frontend-scrum-kit) — tag `v2.7` (repo root = kit files).
 2. **Install script:** `scripts/install.sh` from that repo, or:
    ```bash
-   curl -fsSL https://raw.githubusercontent.com/matan2288/cursor-frontend-scrum-kit/v2.6/scripts/install.sh | bash -s -- .
+   curl -fsSL https://raw.githubusercontent.com/matan2288/cursor-frontend-scrum-kit/v2.7/scripts/install.sh | bash -s -- .
    ```
-3. **Local dev master:** `cursor-dev-kits/cursor-frontend-scrum-kit/` inside `cursor_settings_matan` (monorepo).
+3. **Local dev master:** local clone of the kit source repo.
 
 Do **not** vend a nested copy inside consumer `.cursor/` (e.g. no `.cursor/cursor-frontend-scrum-kit/`). Copy **contents** flat into `<repo>/.cursor/`. Consumer repos keep extra `rules/project-specific/*` contracts locally only.
 

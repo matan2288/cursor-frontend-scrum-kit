@@ -4,6 +4,16 @@ Plain template (not an active rule). Copy the relevant parts into your project's
 
 Use this rule only in projects that require a managed network proxy, VPN, or specific local setup for git, package managers, MCP launchers, or external HTTP calls.
 
+## Recommended pattern (v2.7)
+
+| File | Role |
+|------|------|
+| `network-setup.example.md` | Committed template (placeholders only) |
+| `network-setup.local.md` | Personal proxy URLs + push commands (**gitignore this file**) |
+| Always-on rules | Link to `@network-setup.local.md`; never embed proxy hosts |
+
+On integrate: copy `network-setup.example.md` to `network-setup.local.md`, fill in values, add the local file to `.gitignore`.
+
 ## What To Document Here
 
 - Whether the project requires direct access, a managed proxy, VPN, or a specific local setup step.
@@ -22,4 +32,4 @@ CURSOR_NETWORK=work
 CURSOR_PROXY_URL=http://proxy.example:8080
 ```
 
-If the proxy endpoint is sensitive, keep it out of the repository entirely and refer users to internal setup docs.
+If the proxy endpoint is sensitive, keep it out of the repository entirely and use `network-setup.local.md` (gitignored) for project-specific push one-liners.

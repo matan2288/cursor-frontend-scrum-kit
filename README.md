@@ -1,6 +1,6 @@
 # Cursor Frontend Scrum Kit
 
-Version: v2.6 · see [KIT-CHANGELOG-LESSONS.md](KIT-CHANGELOG-LESSONS.md) · 👋 [GETTING-STARTED.md](GETTING-STARTED.md)
+Version: v2.7 · see [KIT-CHANGELOG-LESSONS.md](KIT-CHANGELOG-LESSONS.md) · 👋 [GETTING-STARTED.md](GETTING-STARTED.md)
 
 **Master source** for this kit. Edit generic kit files here first; consumer repos (e.g. rex-sdk) integrate via `@workflows/integrate-kit.md`.
 
@@ -57,6 +57,7 @@ cursor-frontend-scrum-kit/            # this directory (kit master)
         ├── glossary.md
         ├── project-lessons.md
         ├── network-template.md
+        ├── network-setup.example.md
         ├── prompts/
         │   └── README.md
         └── README.mdc
@@ -88,27 +89,27 @@ See [GETTING-STARTED.md](GETTING-STARTED.md) for the full cheatsheet. Quick refe
 
 ## Install Into Your Project
 
-**GitHub:** [github.com/matan2288/cursor-frontend-scrum-kit](https://github.com/matan2288/cursor-frontend-scrum-kit) (repo root = kit files; tag `v2.6`).
+**GitHub:** [github.com/matan2288/cursor-frontend-scrum-kit](https://github.com/matan2288/cursor-frontend-scrum-kit) (repo root = kit files; tag `v2.7`).
 
 ### 1. Copy kit files (flat into `.cursor/`)
 
 From the target repo root:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/matan2288/cursor-frontend-scrum-kit/v2.6/scripts/install.sh | bash -s -- .
+curl -fsSL https://raw.githubusercontent.com/matan2288/cursor-frontend-scrum-kit/v2.7/scripts/install.sh | bash -s -- .
 ```
 
 Or clone and run locally:
 
 ```bash
-git clone --depth 1 --branch v2.6 https://github.com/matan2288/cursor-frontend-scrum-kit.git /tmp/cursor-kit
+git clone --depth 1 --branch v2.7 https://github.com/matan2288/cursor-frontend-scrum-kit.git /tmp/cursor-kit
 /tmp/cursor-kit/scripts/install.sh .
 ```
 
 **Refresh generic layers only** (keeps filled `context.mdc`, `project-lessons.md`):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/matan2288/cursor-frontend-scrum-kit/v2.6/scripts/install.sh | bash -s -- --generic-only .
+curl -fsSL https://raw.githubusercontent.com/matan2288/cursor-frontend-scrum-kit/v2.7/scripts/install.sh | bash -s -- --generic-only .
 ```
 
 ### 2. Wire to your repo (Cursor chat)
@@ -137,6 +138,16 @@ Target layout (preserve subfolders so `@`-paths resolve):
 - `@`-paths: after install, `context.mdc` placeholders resolve against the target repo — fill or remove them.
 
 **Edit source:** develop in `cursor_settings_matan` monorepo (`cursor-dev-kits/cursor-frontend-scrum-kit/`); publish to GitHub; consumers pull by tag.
+
+## Network and git push (personal)
+
+| File | Role |
+|------|------|
+| `rules/project-specific/network-setup.example.md` | Committed template (placeholders) |
+| `rules/project-specific/network-setup.local.md` | Personal proxy + push commands (**gitignore in consumer repo**) |
+| `rules/before-commit/checklist.mdc` | Problems gate + commit message rules |
+
+On integrate: copy example to local, fill values, gitignore the local file. Never commit proxy URLs in always-on rules.
 
 ## Operating Model
 

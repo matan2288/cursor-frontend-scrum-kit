@@ -17,6 +17,7 @@ Use this folder for local project contracts that should not be generalized into 
 - `glossary.md` — project term definitions (`@`-mentioned by context).
 - `project-lessons.md` — accumulated decisions/corrections, maintained by the learning loop (`@`-mentioned by context).
 - `network-template.md` — plain template for project network setup (inert until copied).
+- `network-setup.example.md` — copy to `network-setup.local.md` (gitignored) for personal proxy and push commands.
 - `prompts/` — paste/invoke templates; save lessons via `@workflows/save-to-project-lessons.md`.
 
 ## What Belongs Here

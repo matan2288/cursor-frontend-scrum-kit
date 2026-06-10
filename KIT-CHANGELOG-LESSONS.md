@@ -4,6 +4,12 @@ Version history and lessons learned about the kit itself (from user input and ad
 
 Add entries via `@workflows/improve-kit.md`. Newest first. No secrets.
 
+### v2.7 — 2026-06-10
+
+- Change: Personal network/git setup pattern (`network-setup.local.md` gitignored + `network-setup.example.md` committed; always-on rules link out). Pre-commit Problems gate on touched files before commit with fix-or-skip prompt. Commit messages capped at 2 lines plain ASCII. Removed Rex-only line from generic before-commit checklist.
+- Why: Consumer pilot (rex-sdk) showed proxy URLs must not ship in committed rules; agents need a Problems-tab gate instead of silent commits with lint/TS issues.
+- Impact: `before-commit/checklist.mdc`, `network-template.md`, `network-setup.example.md`, `project-specific/README.mdc`, README (v2.7).
+
 ### v2.6 — 2026-06-09
 
 - Change: GETTING-STARTED.md (intro + cheatsheet with light section/task icons); integrate-kit welcome gates; learnings.md → project-lessons.md; workflows/save-to-project-lessons.md; delete prompts/learn.md; learning-loop validates corrections against internal + external best practice before apply/save and suggests save at session/fix close; **scripts/install.sh** + standalone GitHub repo for flat `.cursor/` install (no nesting); integrate-kit/README point at GitHub URL.
@@ -58,3 +64,6 @@ Add entries via `@workflows/improve-kit.md`. Newest first. No secrets.
 - Pure templates are plain `.md` (inert); only real rules are `.mdc`.
 - `@`-mentioned `.md` files must be referenced from an active rule to load.
 - Version lives in the README header + this file, not the folder name.
+- Personal proxy URLs and push one-liners: gitignored `network-setup.local.md` + committed `network-setup.example.md`; always-on rules link, never embed hosts.
+- Commit messages: max 2 lines, plain ASCII (subject + optional body); no em dashes or section symbols in git messages.
+- Pre-commit: check Problems on touched files; if any, summarize and offer fix or explicit skip before commit.
