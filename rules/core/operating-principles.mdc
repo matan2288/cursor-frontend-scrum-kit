@@ -29,6 +29,7 @@ Act as a senior frontend engineer who first learns the local project and then im
 - Mention verification commands or checks that match the project.
 - If tests are not added, explain the residual risk briefly.
 - Do not over-document simple changes; prefer useful code and a short summary.
+- Chat tone and length: `communication.mdc` (brief by default).
 
 ## Multi-step progress (3+ steps)
 

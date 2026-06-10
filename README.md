@@ -1,6 +1,6 @@
 # Cursor Frontend Scrum Kit
 
-Version: v2.7 · see [KIT-CHANGELOG-LESSONS.md](KIT-CHANGELOG-LESSONS.md) · 👋 [GETTING-STARTED.md](GETTING-STARTED.md)
+Version: v2.8 · see [KIT-CHANGELOG-LESSONS.md](KIT-CHANGELOG-LESSONS.md) · 👋 [GETTING-STARTED.md](GETTING-STARTED.md)
 
 **Master source** for this kit. Edit generic kit files here first; consumer repos (e.g. rex-sdk) integrate via `@workflows/integrate-kit.md`.
 
@@ -41,6 +41,7 @@ cursor-frontend-scrum-kit/            # this directory (kit master)
 └── rules/
     ├── core/
     │   ├── operating-principles.mdc  # always-on baseline behavior
+    │   ├── communication.mdc         # always-on: brief answers by default
     │   └── learning-loop.mdc         # always-on: validate, offer/suggest save
     ├── frontend/
     │   ├── react-typescript.mdc      # React/TS standard (globbed)
@@ -73,7 +74,7 @@ cursor-frontend-scrum-kit/            # this directory (kit master)
 
 - `rules/project-specific/context.mdc` is always-on and `@`-points to the repo's canonical files (`package.json`, `tsconfig.json`, build/env config) plus `glossary.md` and `project-lessons.md`. Mechanics come from those files; the agent does not guess.
 - The learning loop (`rules/core/learning-loop.mdc`) routes corrections: repo-specific -> `project-lessons.md`; general frontend -> `rules/frontend/*`; security -> `rules/security/*`; kit-design -> `KIT-CHANGELOG-LESSONS.md`.
-- Trigger model: `alwaysApply: true` for `context`, `security/secrets-and-config`, `core/learning-loop`, and `before-commit/*`. Frontend rules are glob-scoped. Workflows, prompts, personas, and skills are invoked explicitly via `@`-mention.
+- Trigger model: `alwaysApply: true` for `context`, `security/secrets-and-config`, `core/communication`, `core/learning-loop`, and `before-commit/*`. Frontend rules are glob-scoped. Workflows, prompts, personas, and skills are invoked explicitly via `@`-mention.
 
 ## Usage
 
@@ -89,20 +90,20 @@ See [GETTING-STARTED.md](GETTING-STARTED.md) for the full cheatsheet. Quick refe
 
 ## Install Into Your Project
 
-**GitHub:** [github.com/matan2288/cursor-frontend-scrum-kit](https://github.com/matan2288/cursor-frontend-scrum-kit) (repo root = kit files; tag `v2.7`).
+**GitHub:** [github.com/matan2288/cursor-frontend-scrum-kit](https://github.com/matan2288/cursor-frontend-scrum-kit) (repo root = kit files; tag `v2.8`).
 
 ### 1. Copy kit files (flat into `.cursor/`)
 
 From the target repo root:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/matan2288/cursor-frontend-scrum-kit/v2.7/scripts/install.sh | bash -s -- .
+curl -fsSL https://raw.githubusercontent.com/matan2288/cursor-frontend-scrum-kit/v2.8/scripts/install.sh | bash -s -- .
 ```
 
 Or clone and run locally:
 
 ```bash
-git clone --depth 1 --branch v2.7 https://github.com/matan2288/cursor-frontend-scrum-kit.git /tmp/cursor-kit
+git clone --depth 1 --branch v2.8 https://github.com/matan2288/cursor-frontend-scrum-kit.git /tmp/cursor-kit
 /tmp/cursor-kit/scripts/install.sh .
 ```
 

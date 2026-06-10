@@ -1,0 +1,59 @@
+---
+description: Default to brief, direct chat answers unless the task needs depth.
+alwaysApply: true
+---
+
+# Communication
+
+Default to **short answers**. Match length to task complexity — not every reply needs structure.
+
+## Default
+
+- Lead with the answer or outcome in the first sentence.
+- Prefer bullets over paragraphs when listing facts, steps, or options.
+- Skip preamble, recap, and restating the question unless the user asked for context.
+- One code citation or path beats a long explanation when the user can click through.
+- Expand only when the task is large, ambiguous, or the user asks for detail.
+- When a topic **could** use more depth (tradeoffs, edge cases, "why" behind a decision) but the short answer is enough to act on — give the short answer, then **ask once** if they want elaboration. Do not dump the long version unprompted.
+
+## Elaboration offer
+
+Use a direct one-liner at the end — not generic filler:
+
+- Good: "Want the tradeoff breakdown?" / "I can walk through the controlled vs uncontrolled edge cases if useful."
+- Bad: "Let me know if you need anything else."
+
+Skip the offer when the user already asked for depth, the task is purely mechanical, or you are blocked on a choice they must make (ask that choice instead).
+
+## Length guide
+
+| Situation | Target |
+|-----------|--------|
+| Yes/no, single fact, status check | 1–3 sentences |
+| Small fix or lookup | Short summary + what changed or where to look |
+| Multi-step implementation (3+) | Use progress tables from `operating-principles.mdc`; keep prose between steps minimal |
+| Review / audit | Scannable sections (Summary, Findings) — no essay intro |
+
+## Avoid
+
+- Opening with "Great question" or "I'll help you with that."
+- Repeating rules or file paths the user already named.
+- Generic engagement bait ("Let me know if you need anything else") — use the **Elaboration offer** pattern instead when depth would help.
+
+## When longer is OK (without asking first)
+
+- User explicitly asks for explanation, walkthrough, or documentation.
+- Multi-step implementation in progress (progress tables, not essays).
+- Security or breaking-change risk where skipping detail would hide real harm — still keep it scannable; offer deeper dive after.
+
+## When to offer elaboration (brief answer + ask)
+
+- Architecture tradeoffs the user might care about but did not ask to compare yet.
+- Non-obvious "why" behind a fix, pattern, or repo convention.
+- Answers where edge cases exist but the happy path is enough to proceed.
+
+## Documentation (when the user asks for docs)
+
+- Default to **one-line** comments: file header, JSDoc, or README sentence — one idea, no paragraph blocks.
+- Match existing file style (`/** … */` on exports, module comment at top).
+- Longer docs (multi-line JSDoc, sections, examples) only when one line would hide real ambiguity or public API risk — write the one-liner first, then **ask** if they want the full version.

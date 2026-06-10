@@ -3,7 +3,7 @@
 set -euo pipefail
 
 KIT_REPO="${KIT_REPO:-https://github.com/matan2288/cursor-frontend-scrum-kit.git}"
-KIT_TAG="${KIT_TAG:-v2.6}"
+KIT_TAG="${KIT_TAG:-v2.8}"
 GENERIC_ONLY=0
 TARGET_DIR=""
 
@@ -16,7 +16,7 @@ Repo root = kit files; no .cursor/cursor-frontend-scrum-kit/ nesting.
 
 Options:
   --generic-only   Refresh generic layers only; do not overwrite filled project-specific files
-  --tag TAG        Kit git tag or branch (default: v2.6)
+  --tag TAG        Kit git tag or branch (default: v2.8)
   --repo URL       Kit git remote (default: GitHub matan2288/cursor-frontend-scrum-kit)
   -h, --help       Show this help
 
@@ -85,6 +85,7 @@ if [[ "$GENERIC_ONLY" -eq 1 ]]; then
   rsync -av --exclude '.git' "$tmpdir/workflows/" "$CURSOR_DIR/workflows/"
   rsync -av --exclude '.git' "$tmpdir/skills/" "$CURSOR_DIR/skills/"
   rsync -av --exclude '.git' "$tmpdir/rules/core/" "$CURSOR_DIR/rules/core/"
+  rsync -av --exclude '.git' "$tmpdir/rules/README.mdc" "$CURSOR_DIR/rules/" 2>/dev/null || true
   rsync -av --exclude '.git' "$tmpdir/rules/frontend/" "$CURSOR_DIR/rules/frontend/"
   rsync -av --exclude '.git' "$tmpdir/rules/before-commit/" "$CURSOR_DIR/rules/before-commit/"
   rsync -av --exclude '.git' "$tmpdir/rules/planning/" "$CURSOR_DIR/rules/planning/"

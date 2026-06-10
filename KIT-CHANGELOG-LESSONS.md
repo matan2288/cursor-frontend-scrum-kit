@@ -4,6 +4,12 @@ Version history and lessons learned about the kit itself (from user input and ad
 
 Add entries via `@workflows/improve-kit.md`. Newest first. No secrets.
 
+### v2.8 — 2026-06-10
+
+- Change: New always-on `core/communication.mdc` — brief answers by default, length guide by situation, no preamble. Elaboration offer when depth would help. Docs on request: one-line JSDoc/comments unless more is needed (then ask).
+- Why: User preference for short agent replies with opt-in depth on complex topics.
+- Impact: `rules/core/communication.mdc`, `rules/README.mdc`, `operating-principles.mdc` Delivery Standards pointer; `GETTING-STARTED.md` always-on list.
+
 ### v2.7 — 2026-06-10
 
 - Change: Personal network/git setup pattern (`network-setup.local.md` gitignored + `network-setup.example.md` committed; always-on rules link out). Pre-commit Problems gate on touched files before commit with fix-or-skip prompt. Commit messages capped at 2 lines plain ASCII. Removed Rex-only line from generic before-commit checklist.

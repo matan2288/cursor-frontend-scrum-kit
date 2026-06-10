@@ -77,7 +77,7 @@ Check Modal focus trap and keyboard behavior only.
 
 ## What runs automatically ⚙️
 
-Always-on rules load every session: operating principles, learning loop, before-commit checks, secrets guidance, and `rules/project-specific/context.mdc`. Project-specific rules load when you edit matching paths.
+Always-on rules load every session: operating principles, communication, learning loop, before-commit checks, secrets guidance, and `rules/project-specific/context.mdc`. Project-specific rules load when you edit matching paths.
 
 ## Typical session patterns 🔄
 

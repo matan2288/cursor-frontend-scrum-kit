@@ -1,0 +1,23 @@
+---
+description: Kit rules index — generic layers and where to look
+alwaysApply: true
+---
+
+# Kit rules index
+
+## Generic layers (`.cursor/rules/`)
+
+| Layer | Path |
+|-------|------|
+| Project entry | `project-specific/context.mdc` |
+| Core | `core/operating-principles.mdc`, `core/communication.mdc`, `core/learning-loop.mdc` |
+| Before commit | `before-commit/checklist.mdc`, `before-commit/cleanup.mdc` |
+| Frontend | `frontend/react-typescript.mdc`, `frontend/styling-boundaries.mdc` |
+| Security | `security/secrets-and-config.mdc` |
+| Planning | `planning/daily-todo-handoff.mdc` |
+| Team | `../personas/team-roles.md` |
+| Workflows | `@workflows/feature-development.md`, `@workflows/component-review.md`, `@workflows/prepare-pr.md`, `@workflows/bug-investigation.md` |
+
+**Always-on:** this index, `communication.mdc`, `learning-loop.mdc`, `before-commit/*`, `security/secrets-and-config.mdc`, and filled `project-specific/context.mdc`. Frontend rules load by glob when you edit matching paths.
+
+Consumer repos add `rules/project-specific/*` overrides — those win on conflict (see consumer `rules/README.mdc` or `context.mdc`).
